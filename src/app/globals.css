@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Mitr&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-mitr: "Mitr", serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: oklch(0.446 0.03 256.802);
+  background: var(--background);
+  font-family: "Mitr", serif;
+}
