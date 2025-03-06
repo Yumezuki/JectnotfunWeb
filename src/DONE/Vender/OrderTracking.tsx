@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { HiTrash, HiOutlinePencilAlt } from "react-icons/hi";
+import { HiTrash } from "react-icons/hi";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -73,12 +73,25 @@ const CartPage = () => {
   const finalPrice = totalPrice + shippingCost;
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center gap-8 p-10 h-screen">
       {/* Cart Section */}
       <div>
-        <h2 className="text-3xl text-rose-300 mb-4">ตะกร้าของคุณ</h2>
+        <div className="p-6 flex items-center justify-between">
+          <Image
+            src={"/image/rabbit.png"}
+            alt={"rabbit"}
+            width={130}
+            height={130}
+            className="rounded-md"
+          />
+          <div className="flex-1 ml-4">
+            <h3 className="text-2xl">ชื่อ</h3>
+            <p className="text-lg text-gray-400">หมายเลขคำสั่งซื้อ : </p>
+            <p className="text-lg text-gray-400">x รายการ</p>
+          </div>
+        </div>
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 mt-6">
           <div className="bg-white p-6 rounded-lg border border-gray-200 w-[50rem]">
             <div
               className="items-center max-h-96 overflow-y-auto m-4 pr-4
@@ -96,8 +109,8 @@ const CartPage = () => {
                   <Image
                     src={item.image}
                     alt={item.name}
-                    width={64}
-                    height={64}
+                    width={100}
+                    height={100}
                     className="rounded-md"
                   />
                   <div className="flex-1 ml-4">
@@ -130,25 +143,9 @@ const CartPage = () => {
             </div>
           </div>
 
-          <div className="h-full">
-            <div className="bg-white p-6 rounded-lg border border-gray-200 w-80 mb-6">
-              <h2 className="text-xl text-rose-300 mb-4">ที่อยู่</h2>
-              <div className="flex justify-between">
-                <div>
-                  <p>(ชื่อ-นามสกุล) (เบอร์โทรศัพท์)</p>
-                  <p>(บ้านเลขที่) (จังหวัด)...</p>
-                </div>
-                <button
-                  className="text-rose-300 rounded-lg hover:text-rose-400"
-                  onClick={() => router.push(`/`)}
-                >
-                  <HiOutlinePencilAlt size={23} />
-                </button>
-              </div>
-            </div>
-
+          <div>
             {/* Checkout Section */}
-            <div className="bg-white p-6 rounded-lg border border-gray-200 w-80">
+            <div className="h-full bg-white p-6 rounded-lg border border-gray-200 w-80">
               <h2 className="text-xl text-rose-300 mb-4">ยอดรวมการสั่งซื้อ</h2>
               <div className="flex justify-between text-gray-600">
                 <p>ราคาทั้งหมด</p>
@@ -164,10 +161,16 @@ const CartPage = () => {
                 <p>${finalPrice}</p>
               </div>
               <button
-                className="mt-6 w-full bg-rose-300 text-white py-2 rounded-lg hover:bg-rose-400"
-                onClick={() => router.push(`/payment?amount=${finalPrice}`)}
+                className="mt-6 w-full bg-emerald-400 text-white py-2 rounded-lg hover:bg-emerald-500"
+                onClick={() => router.push(`/`)}
               >
-                ชำระเงิน →
+                ตอบรับคำสั่งซื้อ →
+              </button>
+              <button
+                className="mt-6 w-full bg-red-400 text-white py-2 rounded-lg hover:bg-red-500"
+                onClick={() => router.push(`/`)}
+              >
+                ปฏิเสธคำสั่งซื้อ
               </button>
             </div>
           </div>
